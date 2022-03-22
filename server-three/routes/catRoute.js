@@ -1,12 +1,16 @@
 "use strict";
 // catRoute
 import { Router } from "express";
+import multer from "multer";
+import { cat_list_get, cat_get, cat_post } from "../controllers/catController";
 
+const upload = multer({ dest: "./uploads" });
 const router = Router();
-import { cat_list_get, cat_get } from "../controllers/catController";
 
 router.get("/", cat_list_get);
 
 router.get("/:id", cat_get);
+
+router.post("/", upload.single("cat"), cat_post);
 
 export default router;

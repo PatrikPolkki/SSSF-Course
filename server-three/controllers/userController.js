@@ -13,4 +13,9 @@ const user_get = (req, res) => {
   res.send(user);
 };
 
-export { user_get_list, user_get };
+const user_post = (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
+};
+
+export { user_get_list, user_get, user_post };

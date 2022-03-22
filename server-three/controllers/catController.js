@@ -13,4 +13,9 @@ const cat_get = (req, res) => {
   res.send(cat);
 };
 
-export { cat_list_get, cat_get };
+const cat_post = (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
+};
+
+export { cat_list_get, cat_get, cat_post };
