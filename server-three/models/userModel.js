@@ -14,4 +14,15 @@ const users = [
   },
 ];
 
-export { users };
+const getUserLogin = (email) => {
+  const user = users
+    .filter((usr) => {
+      if (usr.email === email) {
+        return usr;
+      }
+    })
+    .pop();
+  return user;
+};
+
+export { users, getUserLogin };
