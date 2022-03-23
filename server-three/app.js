@@ -5,6 +5,7 @@ import userRoute from "./routes/userRoute";
 import cors from "cors";
 import authRoute from "./routes/authRoute.js";
 import passport from "./utils/pass.js";
+import db from "./utils/db";
 
 const app = express();
 app.use(cors());
@@ -18,4 +19,8 @@ app.use("/auth", authRoute);
 app.use("/cat", passport.authenticate("jwt", { session: false }), catRoute);
 app.use("/user", passport.authenticate("jwt", { session: false }), userRoute);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+db.on("connected", () => {
+  app.listen(port, () => {
+    console.log(`app listen on port ${port}`);
+  });
+});
